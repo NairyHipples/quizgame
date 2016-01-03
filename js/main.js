@@ -64,7 +64,7 @@ function createAnswerList(arr){
 }
 
 //A button for restarting the Quiz.
-$('restartQuizButton').click(function() {
+$('#restartQuizButton').click(function() {
   window.location.reload();
 });
 
