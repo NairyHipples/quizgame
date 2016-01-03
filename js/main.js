@@ -1,7 +1,7 @@
 var questions = [
-  ['What is 1+0', 'ett'],
-  ['What is 1+1', 'två'],
-  ['What is 1+2', 'tre']
+  ['1. What is 1+0', 'ett'],
+  ['2. What is 1+1', 'två'],
+  ['3. What is 1+2', 'tre']
 
 ];
 
@@ -9,8 +9,8 @@ var questions = [
 //that the player haven't answered questions when she/he starts the Quiz.
 var correctAnswers = 0;
 var wrongAnswers = 0;
-var question = [];
-var answer = [];
+var question;
+var answer;
 var userAnswer;
 var result;
 
@@ -41,8 +41,8 @@ function print(result){
 //I need to create it on the spot when the game is over.
 //---------Here is the function for that--------
 function createAnswerList(arr){
-  //Adding the starting ordered list tag
-  var listHTML = '<ol>';
+  //Adding the starting unordered list tag
+  var listHTML = '<ul>';
   //We want the loop to keep on building list items
   //Until we've gone through all questions in our 'questions' array.
   for (var i = 0; i < arr.length; i += 1){
@@ -56,8 +56,8 @@ function createAnswerList(arr){
     + userAnswer
     + '</strong>.</p>';*/
   }
-  //Adding the last ordered list tag
-  listHTML += '</ol>';
+  //Adding the last unordered list tag
+  listHTML += '</ul>';
   //This function returns all the information we have
   //stored in the 'listHTML' variable.
   return listHTML;
@@ -104,6 +104,7 @@ for (var i = 0; i < questions.length; i += 1){
     userAnswer = 'Nothing';
     wrongAnswers += 1;
     wrong.push(question);
+
 
   } else {
     /*If they're wrong, I need to push their answer
