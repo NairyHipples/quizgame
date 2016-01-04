@@ -1,7 +1,23 @@
+// var questions = [
+//   ['1. What is 1+0', 'ett'],
+//   ['2. What is 1+1', 'två'],
+//   ['3. What is 1+2', 'tre']
+//
+// ];
+
 var questions = [
-  ['1. What is 1+0', 'ett'],
-  ['2. What is 1+1', 'två'],
-  ['3. What is 1+2', 'tre']
+  {
+    question: '1. What is the first question?',
+    answer: 'Ett'
+  },
+  {
+    question: '2. What is the second question?',
+    answer: 'Två'
+  },
+  {
+    question: '3. What is the third question?',
+    answer: 'Tre'
+  }
 
 ];
 
@@ -50,7 +66,7 @@ function createAnswerList(arr){
     /* The code below is for adding what the answer
     was, aswell as the users own answer:
     + '<p>The answer was: <strong>'
-    + questions[i][1]
+    + questions[i].answer
     + '</strong>.</p>'
     + '<p>You answered: <strong>'
     + userAnswer
@@ -62,6 +78,12 @@ function createAnswerList(arr){
   //stored in the 'listHTML' variable.
   return listHTML;
 }
+
+// $('#nextQuestionButton').click(function(){
+//   var html = document.getElementById('questionArea');
+//   html = createAnswerList(questions);
+// });
+
 
 //A button for restarting the Quiz.
 $('#restartQuizButton').click(function() {
@@ -76,15 +98,15 @@ for (var i = 0; i < questions.length; i += 1){
   and grab the current array with [i], and go into
   the actual question with [0], since I've created the array
   to hold the question for the Quiz in the first position in the array.*/
-  question = questions[i][0];
+  question = questions[i].question;
 
   /*To get the answers, I go to the same array like I did above.
   To get the answer for the question, I type [1] to grab my
   programmed correct answer for said question.*/
-  answer = questions[i][1];
+  answer = questions[i].answer;
 
   //Added prompt method for easy check if it works.
-  userAnswer = prompt(question);
+  // userAnswer = prompt(question);
 
   //Now I'm going to check if the userAnswer equals to my programmed answer.
   if (userAnswer === answer){
@@ -94,7 +116,6 @@ for (var i = 0; i < questions.length; i += 1){
     /*If they were right, I need to push the answer
     into the 'correct' array.*/
     correct.push(question);
-
   } else if (userAnswer === null){
     /*If they didn't type anything in the field, I will Set
     their answer to 'Nothing', to prevent my createAnswerList function
@@ -104,19 +125,13 @@ for (var i = 0; i < questions.length; i += 1){
     userAnswer = 'Nothing';
     wrongAnswers += 1;
     wrong.push(question);
-
-
   } else {
     /*If they're wrong, I need to push their answer
     into my 'wrong' array to keep track of their wrong answers.*/
     wrongAnswers += 1;
     wrong.push(question);
-
   }
-  /*To prevent error message: "Cannot read property 'toLowerCase' of null"
-  I add .toLowerCase() on userAnswer down here. This works with my 'Nothing'
-  string when activated in the else if clause above.*/
-  userAnswer = userAnswer.toLowerCase();
+
 }
 
 html = "<p>You got " + correctAnswers + " question(s) right.</p>";
@@ -154,3 +169,10 @@ print(html);
 // if (myArray.length === 0){
 // console.log(myArray + 'Hey there!');
 // }
+
+
+
+/*To prevent error message: "Cannot read property 'toLowerCase' of null"
+I add .toLowerCase() on userAnswer down here. This works with my 'Nothing'
+string when activated in the else if clause above.*/
+// userAnswer = userAnswer.toLowerCase();
